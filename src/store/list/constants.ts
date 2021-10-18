@@ -1,0 +1,6 @@
+export const ADD_ITEM = 'ADD_ITEM'
+export const REMOVE_ITEM = 'REMOVE_ITEM'
+export const UPDATE_ITEM = 'UPDATE_ITEM'
+export const SELECT_ALL = 'SELECT_ALL'
+export const UNSELECT_ALL = 'UNSELECT_ALL'
+export const DELETE_MANY = 'DELETE_MANY'

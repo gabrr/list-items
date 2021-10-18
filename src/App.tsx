@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useTheme } from 'hooks';
+import React, { useEffect } from 'react';
+import { Provider } from 'react-redux';
+import { Routes } from 'routes';
+import store from 'store';
+import { COLORS } from 'utils';
 
-function App() {
+
+const App: React.FC<any> = () => {
+  const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+
+  isDarkMode.addEventListener('change', (e) => {
+    const preferedTheme = e.matches ? 'dark' : 'light'
+    document?.bgColor && (document.bgColor = COLORS[preferedTheme].background)
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Routes/>
+    </Provider>
   );
 }
 
