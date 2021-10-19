@@ -9,6 +9,11 @@ export const useTheme = () => {
     const initialTheme = useSelector(state => state.theme)
     const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
 
+    useEffect(() => {
+      const theme = isDarkMode.matches ? 'dark' : 'light'
+      disptach(setTheme(theme))
+    }, [])
+
     isDarkMode.addEventListener('change', (e) => {
       const preferedTheme = e.matches ? 'dark' : 'light'
       disptach(setTheme(preferedTheme))
